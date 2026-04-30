@@ -38,14 +38,17 @@
   - PowerPress が PowerPress Player ブロックと `[powerpress]` ショートコードを提供することを確認。
   - Claude Code の共有設定ファイルが `.claude/settings.json` であることを確認。
   - GitHub リポジトリ `activefactor/podcast-wp-templete-for-kkk` は存在するが、現在の接続では push 権限がないことを確認。
+  - ローカル Git リポジトリを初期化し、`main` ブランチと `origin` remote を設定。
+  - 初回コミット `f73e605` を作成。
+  - `git push -u origin main` は HTTPS 認証情報が取得できず失敗。
+  - GitHub CLI `gh` はローカルに未インストール。
 - 未確認事項:
   - Spotify の正式URL。
   - RSS フィードの正式URL。
   - 番組アートワークの正式利用可否。
   - 本番 WordPress/PHP バージョン。
   - PowerPress の本番設定。
+  - GitHub への push 権限または認証方法。
 - 次回作業:
-  - Git 初期化と初回コミット。
-  - push 権限確認または権限付与後の GitHub 登録。
+  - GitHub 認証設定または push 権限付与後の GitHub 登録。
   - WordPress テーマ土台の作成。
-

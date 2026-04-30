@@ -7,6 +7,8 @@
 
 GitHub 上の対象リポジトリは存在する。2026-04-30 時点の確認では、現在の接続権限は pull のみで、push 権限は確認できていない。
 
+ローカルでは Git 初期化、`main` ブランチ作成、`origin` remote 設定、初回コミット作成まで完了している。`git push -u origin main` は HTTPS 認証情報が取得できず失敗した。ローカルに GitHub CLI `gh` は未インストール。
+
 ## 2. 初期登録方針
 
 ローカル側:
@@ -25,6 +27,11 @@ push が拒否された場合:
 - GitHub 側で `activefactor/podcast-wp-templete-for-kkk` への write 権限を付与する。
 - または、書き込み可能な fork に push して Pull Request を作成する。
 - 既存リポジトリが空でない場合は、先に `git pull --rebase origin main` を検討する。
+
+HTTPS 認証で止まる場合:
+
+- GitHub CLI をインストールして `gh auth login` を実行する。
+- または remote を SSH URL に変更し、SSH key が GitHub に登録されている状態で push する。
 
 ## 3. ブランチ運用
 
@@ -78,4 +85,3 @@ Issue化するもの:
 - [ ] ドキュメントが揃っている。
 - [ ] remote URL が正しい。
 - [ ] push 権限がある。
-
