@@ -1,0 +1,38 @@
+# Environment and secrets
+.env
+.env.*
+wp-config.php
+secrets/
+
+# Dependencies
+node_modules/
+vendor/
+
+# Build and cache
+dist/
+build/
+.cache/
+.sass-cache/
+
+# WordPress local files
+wp-content/uploads/
+wp-content/cache/
+wp-content/upgrade/
+wp-content/backups/
+
+# Database and backups
+*.sql
+*.sql.gz
+*.zip
+*.tar
+*.tar.gz
+
+# OS and editor
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+
+# Claude local settings
+.claude/settings.local.json
+

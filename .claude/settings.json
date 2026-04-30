@@ -1,0 +1,53 @@
+{
+  "permissions": {
+    "allow": [
+      "Read(./README.md)",
+      "Read(./CLAUDE.md)",
+      "Read(./DESIGN.md)",
+      "Read(./docs/**)",
+      "Read(./image/**)",
+      "Read(./wp-content/**)",
+      "Edit(./docs/**)",
+      "Edit(./DESIGN.md)",
+      "Edit(./CLAUDE.md)",
+      "Edit(./README.md)",
+      "Edit(./wp-content/**)",
+      "Write(./docs/**)",
+      "Write(./wp-content/**)",
+      "Bash(git status:*)",
+      "Bash(git diff:*)",
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Bash(git branch:*)",
+      "Bash(git remote:*)",
+      "Bash(git log:*)",
+      "Bash(npm run lint:*)",
+      "Bash(npm run test:*)",
+      "Bash(composer run lint:*)",
+      "Bash(composer run test:*)"
+    ],
+    "ask": [
+      "Bash(git push:*)",
+      "Bash(npm install:*)",
+      "Bash(composer install:*)"
+    ],
+    "deny": [
+      "Read(./.env)",
+      "Read(./.env.*)",
+      "Read(./wp-config.php)",
+      "Read(./secrets/**)",
+      "Read(./database/**)",
+      "Read(./backups/**)",
+      "Bash(rm:*)",
+      "Bash(git reset:*)",
+      "Bash(git checkout:*)",
+      "Bash(curl:*)",
+      "Bash(wget:*)"
+    ]
+  },
+  "env": {
+    "CLAUDE_BASH_MAINTAIN_PROJECT_WORKING_DIR": "1"
+  },
+  "includeCoAuthoredBy": false
+}
+
