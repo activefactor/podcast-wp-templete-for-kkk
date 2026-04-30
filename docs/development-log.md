@@ -42,13 +42,12 @@
   - 初回コミット `f73e605` を作成。
   - `git push -u origin main` は HTTPS 認証情報が取得できず失敗。
   - GitHub CLI `gh` はローカルに未インストール。
+  - SSH remote `git@github.com:activefactor/podcast-wp-templete-for-kkk.git` に切り替え、`main` を GitHub へ push。
 - 未確認事項:
   - Spotify の正式URL。
   - RSS フィードの正式URL。
   - 番組アートワークの正式利用可否。
   - 本番 WordPress/PHP バージョン。
   - PowerPress の本番設定。
-  - GitHub への push 権限または認証方法。
 - 次回作業:
-  - GitHub 認証設定または push 権限付与後の GitHub 登録。
   - WordPress テーマ土台の作成。

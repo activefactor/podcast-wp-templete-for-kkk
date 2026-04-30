@@ -7,7 +7,7 @@
 
 GitHub 上の対象リポジトリは存在する。2026-04-30 時点の確認では、現在の接続権限は pull のみで、push 権限は確認できていない。
 
-ローカルでは Git 初期化、`main` ブランチ作成、`origin` remote 設定、初回コミット作成まで完了している。`git push -u origin main` は HTTPS 認証情報が取得できず失敗した。ローカルに GitHub CLI `gh` は未インストール。
+ローカルでは Git 初期化、`main` ブランチ作成、`origin` remote 設定、初回コミット作成まで完了している。HTTPS では認証情報が取得できなかったため、remote を SSH URL に変更し、`main` を GitHub へ push 済み。
 
 ## 2. 初期登録方針
 
