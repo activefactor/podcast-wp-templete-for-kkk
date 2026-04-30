@@ -1,0 +1,341 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>K and K Knight Podcast / 画像パーツライブラリ</title>
+<style>
+  :root{
+    --bg:#fafaf7;
+    --ink:#1f2937;
+    --ink-2:#475569;
+    --muted:#94a3b8;
+    --line:#e2e8f0;
+    --mint:#7dd3c0;
+    --lime:#bef264;
+    --sky:#e0f2fe;
+    --cyan:#06b6d4;
+    --card:#ffffff;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0}
+  body{
+    font-family: "Helvetica Neue", Helvetica, "Hiragino Sans", "Yu Gothic UI", system-ui, sans-serif;
+    color:var(--ink);
+    background:var(--bg);
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:1240px; margin:0 auto; padding:48px 32px 96px;}
+  header.hd{display:flex; align-items:end; justify-content:space-between; gap:24px; margin-bottom:40px; border-bottom:1px solid var(--line); padding-bottom:24px;}
+  header.hd h1{font-size:28px; margin:0 0 6px; font-weight:800; letter-spacing:-0.01em;}
+  header.hd p{margin:0; color:var(--ink-2); font-size:14px; line-height:1.7;}
+  header.hd .meta{font-family: ui-monospace, Menlo, Consolas, monospace; font-size:12px; color:var(--muted); white-space:nowrap;}
+  section{margin-top:48px;}
+  section > h2{
+    font-size:18px; margin:0 0 4px; font-weight:800;
+    display:flex; align-items:center; gap:10px;
+  }
+  section > h2 .num{
+    font-family: ui-monospace, Menlo, Consolas, monospace;
+    font-size:11px; color:var(--muted); font-weight:600;
+    background:#fff; border:1px solid var(--line); padding:2px 8px; border-radius:99px;
+  }
+  section > p.lead{margin:0 0 20px; color:var(--ink-2); font-size:13px; line-height:1.7;}
+
+  .grid{display:grid; gap:16px; grid-template-columns:repeat(auto-fill, minmax(220px, 1fr));}
+  .grid.lg{grid-template-columns:repeat(auto-fill, minmax(300px, 1fr));}
+  .grid.sm{grid-template-columns:repeat(auto-fill, minmax(160px, 1fr));}
+
+  .card{
+    background:var(--card);
+    border:1px solid var(--line);
+    border-radius:14px;
+    padding:14px;
+    display:flex; flex-direction:column;
+  }
+  .preview{
+    border:1px dashed #e2e8f0;
+    border-radius:10px;
+    background:
+      linear-gradient(45deg, #f8fafc 25%, transparent 25%) 0 0/16px 16px,
+      linear-gradient(-45deg, #f8fafc 25%, transparent 25%) 0 8px/16px 16px,
+      linear-gradient(45deg, transparent 75%, #f8fafc 75%) 8px -8px/16px 16px,
+      linear-gradient(-45deg, transparent 75%, #f8fafc 75%) -8px 0/16px 16px,
+      #ffffff;
+    aspect-ratio:4/3;
+    display:flex; align-items:center; justify-content:center;
+    overflow:hidden;
+    padding:14px;
+  }
+  .preview.dark{background:#0f172a;}
+  .preview img{max-width:100%; max-height:100%; object-fit:contain; display:block;}
+  .meta-row{display:flex; align-items:center; justify-content:space-between; gap:8px; margin-top:12px;}
+  .name{font-size:13px; font-weight:700; line-height:1.3;}
+  .sub{font-size:11px; color:var(--muted); font-family: ui-monospace, Menlo, Consolas, monospace;}
+  .links{display:flex; gap:6px; margin-top:8px;}
+  .links a{
+    font-family: ui-monospace, Menlo, Consolas, monospace;
+    font-size:10px; text-decoration:none; color:var(--ink-2);
+    background:#f1f5f9; border:1px solid var(--line);
+    padding:3px 7px; border-radius:6px;
+  }
+  .links a:hover{background:var(--sky); border-color:var(--mint); color:var(--ink);}
+
+  .tag{
+    display:inline-flex; align-items:center; gap:4px;
+    font-family: ui-monospace, Menlo, Consolas, monospace;
+    font-size:10px; padding:2px 8px; border-radius:99px;
+    background:#f1f5f9; color:var(--ink-2); border:1px solid var(--line);
+  }
+  .tag .dot{width:6px; height:6px; border-radius:99px; background:var(--mint);}
+
+  /* swatches */
+  .swatches{display:grid; gap:12px; grid-template-columns:repeat(auto-fill, minmax(130px, 1fr));}
+  .sw{border:1px solid var(--line); border-radius:10px; overflow:hidden; background:#fff;}
+  .sw .chip{height:64px;}
+  .sw .info{padding:8px 10px; font-family: ui-monospace, Menlo, Consolas, monospace; font-size:11px; color:var(--ink-2); display:flex; justify-content:space-between;}
+  .sw .info b{color:var(--ink); font-weight:700;}
+
+  .legend{display:flex; flex-wrap:wrap; gap:8px; margin-bottom:18px;}
+  .legend .tag{background:#fff;}
+
+  footer{margin-top:64px; padding-top:24px; border-top:1px solid var(--line); color:var(--muted); font-size:12px; line-height:1.7;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="hd">
+    <div>
+      <h1>K and K Knight Podcast — 画像パーツライブラリ</h1>
+      <p>WordPressテンプレート用に切り出したオリジナル素材一式。SVG（無劣化／編集可）と PNG @2x の2形式で書き出してあります。<br/>配信プラットフォーム（Apple Podcast / Spotify 等）の実ロゴは権利上含まず、配置スペース用のプレースホルダーのみ提供。</p>
+    </div>
+    <div class="meta">
+      v1.0 · 2026-04-30<br/>
+      assets/svg/&nbsp;&nbsp;assets/png/
+    </div>
+  </header>
+
+  <!-- Color tokens -->
+  <section>
+    <h2><span class="num">00</span>カラートークン</h2>
+    <p class="lead">テンプレートで使用するブランドカラー。WordPressの theme.json / CSS変数にそのまま転用できます。</p>
+    <div class="swatches">
+      <div class="sw"><div class="chip" style="background:#1f2937"></div><div class="info"><b>ink</b><span>#1F2937</span></div></div>
+      <div class="sw"><div class="chip" style="background:#bef264"></div><div class="info"><b>lime</b><span>#BEF264</span></div></div>
+      <div class="sw"><div class="chip" style="background:#7dd3c0"></div><div class="info"><b>mint</b><span>#7DD3C0</span></div></div>
+      <div class="sw"><div class="chip" style="background:#06b6d4"></div><div class="info"><b>cyan</b><span>#06B6D4</span></div></div>
+      <div class="sw"><div class="chip" style="background:#e0f2fe"></div><div class="info"><b>sky</b><span>#E0F2FE</span></div></div>
+      <div class="sw"><div class="chip" style="background:#ecfccb"></div><div class="info"><b>lime-50</b><span>#ECFCCB</span></div></div>
+      <div class="sw"><div class="chip" style="background:#fafaf7; border-bottom:1px solid var(--line)"></div><div class="info"><b>bg</b><span>#FAFAF7</span></div></div>
+    </div>
+  </section>
+
+  <!-- Logo -->
+  <section>
+    <h2><span class="num">01</span>ロゴ・ブランドマーク</h2>
+    <p class="lead">サイトヘッダー、ファビコン、OGP画像などで使う基本マーク。</p>
+    <div class="grid">
+      <div class="card">
+        <div class="preview"><img src="assets/svg/logo-mark.svg" alt="logo mark"/></div>
+        <div class="meta-row"><div class="name">ロゴマーク</div><span class="tag"><span class="dot"></span>square</span></div>
+        <div class="sub">64×64 / favicon, app-icon</div>
+        <div class="links"><a href="assets/svg/logo-mark.svg" target="_blank">SVG</a><a href="assets/png/logo-mark-2x.png" target="_blank">PNG@2x</a></div>
+      </div>
+      <div class="card" style="grid-column:span 2;">
+        <div class="preview"><img src="assets/svg/logo-lockup.svg" alt="logo lockup" style="max-height:80px;"/></div>
+        <div class="meta-row"><div class="name">ロゴ + ワードマーク</div><span class="tag"><span class="dot"></span>header</span></div>
+        <div class="sub">420×64 / グローバルナビ用</div>
+        <div class="links"><a href="assets/svg/logo-lockup.svg" target="_blank">SVG</a><a href="assets/png/logo-lockup-2x.png" target="_blank">PNG@2x</a></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Hero -->
+  <section>
+    <h2><span class="num">02</span>ヒーロービジュアル</h2>
+    <p class="lead">トップのファーストビュー用。合成版1点と、レイアウト変更時に組み替えられる個別パーツ5点を用意。</p>
+    <div class="grid lg">
+      <div class="card" style="grid-column:span 2;">
+        <div class="preview" style="aspect-ratio:3/2;"><img src="assets/svg/hero-composite.svg" alt="hero composite"/></div>
+        <div class="meta-row"><div class="name">ヒーロー合成（ワンファイル版）</div><span class="tag"><span class="dot"></span>hero</span></div>
+        <div class="sub">720×480 / そのまま貼るだけで完成</div>
+        <div class="links"><a href="assets/svg/hero-composite.svg" target="_blank">SVG</a><a href="assets/png/hero-composite-2x.png" target="_blank">PNG@2x</a></div>
+      </div>
+      <div class="card">
+        <div class="preview" style="aspect-ratio:3/4;"><img src="assets/svg/mic.svg" alt="mic"/></div>
+        <div class="meta-row"><div class="name">スタジオマイク</div><span class="tag"><span class="dot"></span>part</span></div>
+        <div class="sub">320×420 / 中央メインオブジェクト</div>
+        <div class="links"><a href="assets/svg/mic.svg" target="_blank">SVG</a><a href="assets/png/mic-2x.png" target="_blank">PNG@2x</a></div>
+      </div>
+      <div class="card">
+        <div class="preview"><img src="assets/svg/headphones.svg" alt="headphones"/></div>
+        <div class="meta-row"><div class="name">ヘッドフォン</div><span class="tag"><span class="dot"></span>part</span></div>
+        <div class="sub">240×200</div>
+        <div class="links"><a href="assets/svg/headphones.svg" target="_blank">SVG</a><a href="assets/png/headphones-2x.png" target="_blank">PNG@2x</a></div>
+      </div>
+      <div class="card">
+        <div class="preview"><img src="assets/svg/laptop-code.svg" alt="laptop"/></div>
+        <div class="meta-row"><div class="name">ノートPC（コード表示）</div><span class="tag"><span class="dot"></span>part</span></div>
+        <div class="sub">320×220</div>
+        <div class="links"><a href="assets/svg/laptop-code.svg" target="_blank">SVG</a><a href="assets/png/laptop-code-2x.png" target="_blank">PNG@2x</a></div>
+      </div>
+      <div class="card">
+        <div class="preview"><img src="assets/svg/smartphone.svg" alt="smartphone" style="max-height:200px;"/></div>
+        <div class="meta-row"><div class="name">スマートフォン</div><span class="tag"><span class="dot"></span>part</span></div>
+        <div class="sub">140×240</div>
+        <div class="links"><a href="assets/svg/smartphone.svg" target="_blank">SVG</a><a href="assets/png/smartphone-2x.png" target="_blank">PNG@2x</a></div>
+      </div>
+      <div class="card">
+        <div class="preview"><img src="assets/svg/smartwatch.svg" alt="smartwatch" style="max-height:160px;"/></div>
+        <div class="meta-row"><div class="name">スマートウォッチ</div><span class="tag"><span class="dot"></span>part</span></div>
+        <div class="sub">120×160</div>
+        <div class="links"><a href="assets/svg/smartwatch.svg" target="_blank">SVG</a><a href="assets/png/smartwatch-2x.png" target="_blank">PNG@2x</a></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Episode thumbs -->
+  <section>
+    <h2><span class="num">03</span>エピソードサムネイル</h2>
+    <p class="lead">最新エピソード一覧用。記事カテゴリに合わせて使い分け、または汎用版を編集して各回ごとの画像を生成。</p>
+    <div class="grid">
+      <div class="card">
+        <div class="preview"><img src="assets/svg/thumb-ai.svg" alt="thumb ai"/></div>
+        <div class="meta-row"><div class="name">AI / 教育</div><span class="tag"><span class="dot"></span>thumb</span></div>
+        <div class="sub">200×160</div>
+        <div class="links"><a href="assets/svg/thumb-ai.svg" target="_blank">SVG</a><a href="assets/png/thumb-ai-2x.png" target="_blank">PNG@2x</a></div>
+      </div>
+      <div class="card">
+        <div class="preview"><img src="assets/svg/thumb-gadget.svg" alt="thumb gadget"/></div>
+        <div class="meta-row"><div class="name">ガジェット</div><span class="tag"><span class="dot"></span>thumb</span></div>
+        <div class="sub">200×160</div>
+        <div class="links"><a href="assets/svg/thumb-gadget.svg" target="_blank">SVG</a><a href="assets/png/thumb-gadget-2x.png" target="_blank">PNG@2x</a></div>
+      </div>
+      <div class="card">
+        <div class="preview"><img src="assets/svg/thumb-webdesign.svg" alt="thumb webdesign"/></div>
+        <div class="meta-row"><div class="name">Webデザイン</div><span class="tag"><span class="dot"></span>thumb</span></div>
+        <div class="sub">200×160</div>
+        <div class="links"><a href="assets/svg/thumb-webdesign.svg" target="_blank">SVG</a><a href="assets/png/thumb-webdesign-2x.png" target="_blank">PNG@2x</a></div>
+      </div>
+      <div class="card">
+        <div class="preview"><img src="assets/svg/thumb-generic.svg" alt="thumb generic"/></div>
+        <div class="meta-row"><div class="name">汎用テンプレート</div><span class="tag"><span class="dot"></span>thumb</span></div>
+        <div class="sub">200×160 / 編集ベース用</div>
+        <div class="links"><a href="assets/svg/thumb-generic.svg" target="_blank">SVG</a><a href="assets/png/thumb-generic-2x.png" target="_blank">PNG@2x</a></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Topic icons -->
+  <section>
+    <h2><span class="num">04</span>トピックアイコン</h2>
+    <p class="lead">「取り上げるトピック」セクション用の5種。線画＋黄緑アクセント、サイズ統一。</p>
+    <div class="grid sm">
+      <div class="card">
+        <div class="preview" style="aspect-ratio:1/1;"><img src="assets/svg/topic-webdesign.svg" alt=""/></div>
+        <div class="meta-row"><div class="name">ウェブデザイン</div><span class="sub">64²</span></div>
+        <div class="links"><a href="assets/svg/topic-webdesign.svg" target="_blank">SVG</a><a href="assets/png/topic-webdesign-2x.png" target="_blank">PNG@2x</a></div>
+      </div>
+      <div class="card">
+        <div class="preview" style="aspect-ratio:1/1;"><img src="assets/svg/topic-gadget.svg" alt=""/></div>
+        <div class="meta-row"><div class="name">ガジェット</div><span class="sub">64²</span></div>
+        <div class="links"><a href="assets/svg/topic-gadget.svg" target="_blank">SVG</a><a href="assets/png/topic-gadget-2x.png" target="_blank">PNG@2x</a></div>
+      </div>
+      <div class="card">
+        <div class="preview" style="aspect-ratio:1/1;"><img src="assets/svg/topic-edtech.svg" alt=""/></div>
+        <div class="meta-row"><div class="name">教育テクノロジー</div><span class="sub">64²</span></div>
+        <div class="links"><a href="assets/svg/topic-edtech.svg" target="_blank">SVG</a><a href="assets/png/topic-edtech-2x.png" target="_blank">PNG@2x</a></div>
+      </div>
+      <div class="card">
+        <div class="preview" style="aspect-ratio:1/1;"><img src="assets/svg/topic-ai.svg" alt=""/></div>
+        <div class="meta-row"><div class="name">AI</div><span class="sub">64²</span></div>
+        <div class="links"><a href="assets/svg/topic-ai.svg" target="_blank">SVG</a><a href="assets/png/topic-ai-2x.png" target="_blank">PNG@2x</a></div>
+      </div>
+      <div class="card">
+        <div class="preview" style="aspect-ratio:1/1;"><img src="assets/svg/topic-chat.svg" alt=""/></div>
+        <div class="meta-row"><div class="name">ゆるい雑談</div><span class="sub">64²</span></div>
+        <div class="links"><a href="assets/svg/topic-chat.svg" target="_blank">SVG</a><a href="assets/png/topic-chat-2x.png" target="_blank">PNG@2x</a></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Hosts -->
+  <section>
+    <h2><span class="num">05</span>ホストアバター（シルエット）</h2>
+    <p class="lead">「ホスト紹介」セクション用。実写写真への差し替えを前提とした、シルエットベースの仮アバター。</p>
+    <div class="grid sm">
+      <div class="card">
+        <div class="preview" style="aspect-ratio:1/1;"><img src="assets/svg/host-avatar-1.svg" alt=""/></div>
+        <div class="meta-row"><div class="name">ホスト1（ヘッドフォン）</div><span class="sub">120²</span></div>
+        <div class="links"><a href="assets/svg/host-avatar-1.svg" target="_blank">SVG</a><a href="assets/png/host-avatar-1-2x.png" target="_blank">PNG@2x</a></div>
+      </div>
+      <div class="card">
+        <div class="preview" style="aspect-ratio:1/1;"><img src="assets/svg/host-avatar-2.svg" alt=""/></div>
+        <div class="meta-row"><div class="name">ホスト2（ショート）</div><span class="sub">120²</span></div>
+        <div class="links"><a href="assets/svg/host-avatar-2.svg" target="_blank">SVG</a><a href="assets/png/host-avatar-2-2x.png" target="_blank">PNG@2x</a></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- UI parts -->
+  <section>
+    <h2><span class="num">06</span>UIパーツ・装飾</h2>
+    <p class="lead">ボタン、装飾下線、波形、ドットなど。CSS背景や繰り返しパターンとしても利用可。</p>
+    <div class="grid">
+      <div class="card">
+        <div class="preview" style="aspect-ratio:1/1;"><img src="assets/svg/play-button.svg" alt="" style="max-height:90px;"/></div>
+        <div class="meta-row"><div class="name">再生ボタン</div><span class="sub">80²</span></div>
+        <div class="links"><a href="assets/svg/play-button.svg" target="_blank">SVG</a><a href="assets/png/play-button-2x.png" target="_blank">PNG@2x</a></div>
+      </div>
+      <div class="card">
+        <div class="preview"><img src="assets/svg/speech-bubble.svg" alt=""/></div>
+        <div class="meta-row"><div class="name">吹き出し</div><span class="sub">120×100</span></div>
+        <div class="links"><a href="assets/svg/speech-bubble.svg" target="_blank">SVG</a><a href="assets/png/speech-bubble-2x.png" target="_blank">PNG@2x</a></div>
+      </div>
+      <div class="card" style="grid-column:span 2;">
+        <div class="preview" style="aspect-ratio:10/1;"><img src="assets/svg/decoration-waveform.svg" alt=""/></div>
+        <div class="meta-row"><div class="name">音声波形</div><span class="sub">600×60</span></div>
+        <div class="links"><a href="assets/svg/decoration-waveform.svg" target="_blank">SVG</a><a href="assets/png/decoration-waveform-2x.png" target="_blank">PNG@2x</a></div>
+      </div>
+      <div class="card">
+        <div class="preview" style="aspect-ratio:6/1;"><img src="assets/svg/decoration-marker.svg" alt=""/></div>
+        <div class="meta-row"><div class="name">マーカー下線</div><span class="sub">240×16</span></div>
+        <div class="links"><a href="assets/svg/decoration-marker.svg" target="_blank">SVG</a><a href="assets/png/decoration-marker-2x.png" target="_blank">PNG@2x</a></div>
+      </div>
+      <div class="card">
+        <div class="preview" style="aspect-ratio:1/1;"><img src="assets/svg/decoration-dots.svg" alt=""/></div>
+        <div class="meta-row"><div class="name">ドット模様</div><span class="sub">200² / repeat</span></div>
+        <div class="links"><a href="assets/svg/decoration-dots.svg" target="_blank">SVG</a><a href="assets/png/decoration-dots-2x.png" target="_blank">PNG@2x</a></div>
+      </div>
+      <div class="card">
+        <div class="preview" style="aspect-ratio:1/1;"><img src="assets/svg/decoration-slash.svg" alt="" style="max-height:60px;"/></div>
+        <div class="meta-row"><div class="name">斜め線（キャッチ装飾）</div><span class="sub">24×32</span></div>
+        <div class="links"><a href="assets/svg/decoration-slash.svg" target="_blank">SVG</a><a href="assets/png/decoration-slash-2x.png" target="_blank">PNG@2x</a></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Platform placeholder -->
+  <section>
+    <h2><span class="num">07</span>配信プラットフォーム枠（プレースホルダー）</h2>
+    <p class="lead">
+      Apple Podcast / Spotify / Google Podcast / Amazon Music / YouTube などの実ロゴは商標のため同梱していません。<br/>
+      実装時は、各サービスが配布する公式ブランドアセットをこの枠に差し込んで使用してください。
+    </p>
+    <div class="grid sm">
+      <div class="card"><div class="preview" style="aspect-ratio:1/1;"><img src="assets/svg/platform-placeholder.svg" alt=""/></div>
+        <div class="meta-row"><div class="name">プラットフォームロゴ枠</div><span class="sub">120²</span></div>
+        <div class="links"><a href="assets/svg/platform-placeholder.svg" target="_blank">SVG</a><a href="assets/png/platform-placeholder-2x.png" target="_blank">PNG@2x</a></div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    ファイル構成 — <code>assets/svg/*.svg</code>（編集可・拡大無劣化）／<code>assets/png/*-2x.png</code>（@2x ラスター）<br/>
+    WordPress 実装ヒント：SVG をテーマフォルダの <code>/assets/img/</code> に配置 →&nbsp;<code>get_template_directory_uri()</code> で参照。SVGアップロードを許可するプラグイン（Safe SVG等）を有効化すると、メディアライブラリからも使い回せます。
+  </footer>
+
+</div>
+</body>
+</html>

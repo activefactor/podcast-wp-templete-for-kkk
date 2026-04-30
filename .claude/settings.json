@@ -6,6 +6,7 @@
       "Read(./DESIGN.md)",
       "Read(./docs/**)",
       "Read(./image/**)",
+      "Read(./design_base/**)",
       "Read(./wp-content/**)",
       "Edit(./docs/**)",
       "Edit(./DESIGN.md)",
@@ -50,4 +51,3 @@
   },
   "includeCoAuthoredBy": false
 }
-

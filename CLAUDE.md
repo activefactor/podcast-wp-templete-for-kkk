@@ -10,6 +10,7 @@
 4. `DESIGN.md`
 5. `docs/development-rules.md`
 6. `docs/security-policy.md`
+7. `design_base/index.html`
 
 ## 守ること
 
@@ -20,6 +21,7 @@
 - `.env`、`wp-config.php`、秘密情報を読まない、編集しない、コミットしない。
 - 実装判断や未確認事項は `docs/development-log.md` に残す。
 - 画像生成やプロンプト変更を行った場合は `docs/prompt-log.md` に残す。
+- コーディング時は `design_base/index.html` と `design_base/assets/` をデザインベースとして参照する。
 
 ## 実装時の想定場所
 
@@ -31,6 +33,7 @@ wp-content/themes/kkk-podcast-template/
 
 - 白基調、濃紺、シアン、ライムの配色を使う。
 - マイク、波形、ガジェット、コードのモチーフを使う。
+- `design_base/assets/svg/` の素材を優先し、必要な素材だけテーマ配下へ取り込む。
 - 実在人物の顔写真風イラストは使わない。
 - Hero は番組名、最新回、視聴CTAがすぐ分かる構成にする。
 
@@ -50,4 +53,3 @@ wp-content/themes/kkk-podcast-template/
 - 未確認事項
 
 必要に応じて `docs/development-log.md` に追記する。
-

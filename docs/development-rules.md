@@ -15,6 +15,7 @@
 ```text
 docs/            設計、ルール、ログ
 image/           参考画像、画像プロンプト
+design_base/     デザインベースHTML、実装参考用画像素材、SVG/PNGアセット
 .claude/         Claude Code 共有設定
 wp-content/      実装時に作成する WordPress テーマ配置候補
 ```
@@ -25,7 +26,19 @@ wp-content/      実装時に作成する WordPress テーマ配置候補
 wp-content/themes/kkk-podcast-template/
 ```
 
-## 3. 命名
+## 3. デザインベース参照ルール
+
+`design_base/` は、コーディング時のデザイン再現と素材利用の基準資料として扱う。
+
+- `design_base/index.html` は、画像パーツライブラリおよびデザインベース確認用HTMLとして参照する。
+- `design_base/assets/svg/` は、編集可能なベクター素材の優先参照元とする。
+- `design_base/assets/png/` は、SVGが使いづらい場面や確認用の等倍/高解像度参照として使う。
+- 実装時にテーマへ素材を組み込む場合は、必要なものだけ `wp-content/themes/kkk-podcast-template/assets/` 配下へコピーする。
+- `design_base/` の元データは参照用として保持し、テーマ実装の都合で直接書き換えない。
+- 色、余白、パーツの雰囲気は `DESIGN.md` を正としつつ、具体的な見た目や素材名は `design_base/index.html` と `design_base/assets/` を確認する。
+- 配信プラットフォームの実ロゴは `design_base` に含まれていないため、利用時は各公式ガイドラインを確認する。
+
+## 4. 命名
 
 - テーマディレクトリ: `kkk-podcast-template`
 - PHP 関数 prefix: `kkk_podcast_`
@@ -33,7 +46,7 @@ wp-content/themes/kkk-podcast-template/
 - CSS class prefix: `kkk-`
 - JavaScript global は原則作らない。
 
-## 4. コーディング規約
+## 5. コーディング規約
 
 ### PHP
 
@@ -58,7 +71,7 @@ wp-content/themes/kkk-podcast-template/
 - PowerPress のプレイヤー挙動に干渉しない。
 - アニメーションは `prefers-reduced-motion` を尊重する。
 
-## 5. WordPress 実装ルール
+## 6. WordPress 実装ルール
 
 - `get_template_part()` でテンプレートパーツ化する。
 - `WP_Query` を使ったら `wp_reset_postdata()` を呼ぶ。
@@ -67,7 +80,7 @@ wp-content/themes/kkk-podcast-template/
 - 投稿本文の表示には `the_content()` を基本とする。
 - ショートコードを手動実行する場合は、重複表示に注意する。
 
-## 6. PowerPress 実装ルール
+## 7. PowerPress 実装ルール
 
 - プレイヤー本体は PowerPress の出力に任せる。
 - テーマ側はラッパー、余白、見出し、補助導線を提供する。
@@ -75,7 +88,7 @@ wp-content/themes/kkk-podcast-template/
 - 1投稿に複数音声を持たせる設計にしない。
 - プレイヤーが表示されない場合の確認観点を `docs/development-log.md` に記録する。
 
-## 7. Gitルール
+## 8. Gitルール
 
 - `main` は常に安定状態にする。
 - 作業ブランチ名は `docs/...` または `feature/...` を使う。
@@ -86,15 +99,16 @@ wp-content/themes/kkk-podcast-template/
   - `feat: add podcast theme scaffold`
   - `fix: guard powerpress player rendering`
 
-## 8. レビュー観点
+## 9. レビュー観点
 
 - 要件にない表示や導線を追加していないか。
+- `design_base/` のデザイン意図と大きくズレていないか。
 - PowerPress の出力を壊していないか。
 - スマートフォンで操作しやすいか。
 - WordPress のエスケープが漏れていないか。
 - 未設定のリンクが空リンクになっていないか。
 
-## 9. 報告ルール
+## 10. 報告ルール
 
 開発者または Claude Code は、まとまった作業ごとに `docs/development-log.md` に以下を残す。
 
@@ -104,4 +118,3 @@ wp-content/themes/kkk-podcast-template/
 - 変更ファイル
 - 確認したこと
 - 未確認または次回課題
-

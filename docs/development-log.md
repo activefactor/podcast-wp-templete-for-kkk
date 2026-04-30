@@ -51,3 +51,21 @@
   - PowerPress の本番設定。
 - 次回作業:
   - WordPress テーマ土台の作成。
+
+## 2026-04-30 追記
+
+- 作業者: Codex
+- 作業内容: `design_base/` をコーディング時のデザインベース資料として扱うルールを追加。
+- 変更ファイル:
+  - `docs/development-rules.md`
+  - `CLAUDE.md`
+  - `.claude/settings.json`
+  - `docs/development-log.md`
+- 確認したこと:
+  - `design_base/index.html` は画像パーツライブラリとして、カラートークン、ロゴ、Hero素材、エピソードサムネイルなどを一覧化している。
+  - `design_base/assets/svg/` と `design_base/assets/png/` に実装参考用素材が格納されている。
+- 未確認事項:
+  - テーマ実装時に実際に取り込む素材の選定。
+  - `design_base` 自体をGit管理対象に含めるかどうか。
+  - `image/image_pronpt.txt` の未コミット変更内容。
+  - 次回課題: テーマ実装時に必要素材のみ `wp-content/themes/kkk-podcast-template/assets/` へ移す。

@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 220" width="320" height="220">
+  
+  <rect x="20" y="14" width="280" height="170" rx="10" fill="#1f2937"></rect>
+  <rect x="30" y="24" width="260" height="150" rx="4" fill="#0f172a"></rect>
+  
+  <g font-family="ui-monospace, Menlo, monospace" font-size="14" fill="#7dd3c0">
+    <text x="44" y="50">&lt;/&gt;</text>
+  </g>
+  <g fill="#7dd3c0" opacity="0.85">
+    <rect x="44" y="62" width="80" height="6" rx="3"></rect>
+    <rect x="44" y="76" width="140" height="6" rx="3" fill="#bef264"></rect>
+    <rect x="60" y="90" width="100" height="6" rx="3"></rect>
+    <rect x="60" y="104" width="160" height="6" rx="3" fill="#94a3b8"></rect>
+    <rect x="44" y="118" width="60" height="6" rx="3"></rect>
+    <rect x="44" y="132" width="120" height="6" rx="3" fill="#bef264"></rect>
+    <rect x="60" y="146" width="90" height="6" rx="3"></rect>
+  </g>
+  
+  <path d="M6 184 L 314 184 L 300 206 L 20 206 Z" fill="#1f2937"></path>
+  <rect x="130" y="184" width="60" height="6" rx="2" fill="#0f172a"></rect>
+</svg>
