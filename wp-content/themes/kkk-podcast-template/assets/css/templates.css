@@ -1,0 +1,405 @@
+/* =================================================================
+   Hero
+================================================================= */
+.kkk-hero {
+  background: var(--kkk-color-navy-900);
+  color: var(--kkk-color-white);
+  padding-block: var(--kkk-space-9);
+  overflow: hidden;
+  position: relative;
+}
+
+.kkk-hero__inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--kkk-space-8);
+  align-items: center;
+  position: relative;
+  z-index: 1;
+}
+
+.kkk-hero__content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--kkk-space-5);
+}
+
+.kkk-hero__eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--kkk-space-2);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--kkk-color-cyan-400);
+}
+
+.kkk-hero__title {
+  font-size: clamp(36px, 5vw, 72px);
+  font-weight: 900;
+  line-height: 1.1;
+  color: var(--kkk-color-white);
+}
+
+.kkk-hero__title mark {
+  background: none;
+  color: var(--kkk-color-lime-400);
+}
+
+.kkk-hero__tagline {
+  font-size: clamp(14px, 1.5vw, 18px);
+  color: rgba(255, 255, 255, 0.75);
+  line-height: 1.7;
+  max-width: 36em;
+}
+
+.kkk-hero__waveform {
+  opacity: 0.4;
+  margin-block: var(--kkk-space-2);
+}
+
+.kkk-hero__actions {
+  display: flex;
+  gap: var(--kkk-space-4);
+  flex-wrap: wrap;
+  padding-top: var(--kkk-space-2);
+}
+
+.kkk-hero__visual {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.kkk-hero__visual img {
+  max-height: 460px;
+  width: auto;
+  filter: drop-shadow(0 24px 48px rgba(0, 167, 232, 0.25));
+}
+
+/* Hero bg decoration */
+.kkk-hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 60% 80% at 100% 50%, rgba(0, 167, 232, 0.12) 0%, transparent 70%),
+    radial-gradient(ellipse 40% 60% at 10% 80%, rgba(25, 213, 232, 0.08) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+@media (max-width: 767px) {
+  .kkk-hero__inner {
+    grid-template-columns: 1fr;
+  }
+
+  .kkk-hero__visual {
+    order: -1;
+  }
+
+  .kkk-hero__visual img {
+    max-height: 260px;
+  }
+}
+
+/* =================================================================
+   Latest Episode (top)
+================================================================= */
+.kkk-latest-episode {
+  padding-block: var(--kkk-space-9);
+  background: var(--kkk-color-surface);
+}
+
+.kkk-latest-episode__inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--kkk-space-8);
+  align-items: start;
+}
+
+.kkk-latest-episode__meta {
+  display: flex;
+  flex-direction: column;
+  gap: var(--kkk-space-4);
+}
+
+.kkk-latest-episode__eyebrow {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--kkk-color-blue-500);
+}
+
+.kkk-latest-episode__title {
+  font-size: clamp(20px, 2.5vw, 28px);
+  color: var(--kkk-color-navy-900);
+  line-height: 1.4;
+}
+
+.kkk-latest-episode__date {
+  font-size: 13px;
+  color: var(--kkk-color-muted);
+}
+
+.kkk-latest-episode__excerpt {
+  font-size: 15px;
+  color: var(--kkk-color-muted);
+  line-height: 1.7;
+}
+
+.kkk-latest-episode__link {
+  margin-top: var(--kkk-space-3);
+  align-self: flex-start;
+}
+
+@media (max-width: 767px) {
+  .kkk-latest-episode__inner {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* =================================================================
+   Topics Section
+================================================================= */
+.kkk-topics {
+  padding-block: var(--kkk-space-9);
+}
+
+.kkk-topics__grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: var(--kkk-space-4);
+}
+
+@media (max-width: 1023px) {
+  .kkk-topics__grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 479px) {
+  .kkk-topics__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* =================================================================
+   Hosts Section
+================================================================= */
+.kkk-hosts {
+  padding-block: var(--kkk-space-9);
+  background: var(--kkk-color-surface);
+}
+
+.kkk-hosts__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--kkk-space-8);
+}
+
+@media (max-width: 767px) {
+  .kkk-hosts__grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* =================================================================
+   Listen Platforms Section
+================================================================= */
+.kkk-listen {
+  padding-block: var(--kkk-space-9);
+  background: var(--kkk-color-navy-900);
+  color: var(--kkk-color-white);
+  text-align: center;
+}
+
+.kkk-listen .kkk-section__heading {
+  color: var(--kkk-color-white);
+  margin-bottom: var(--kkk-space-4);
+}
+
+.kkk-listen__sub {
+  font-size: 15px;
+  color: rgba(255, 255, 255, 0.7);
+  margin-bottom: var(--kkk-space-7);
+}
+
+.kkk-listen__grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--kkk-space-4);
+  justify-content: center;
+}
+
+.kkk-listen__grid .kkk-listen-link {
+  flex: 1;
+  min-width: 180px;
+  max-width: 240px;
+  justify-content: center;
+}
+
+/* =================================================================
+   Episode Archive / Home
+================================================================= */
+.kkk-archive {
+  padding-block: var(--kkk-space-7) var(--kkk-space-9);
+}
+
+.kkk-archive__header {
+  margin-bottom: var(--kkk-space-7);
+}
+
+.kkk-archive__title {
+  font-size: clamp(24px, 3vw, 36px);
+  color: var(--kkk-color-navy-900);
+  margin-bottom: var(--kkk-space-5);
+}
+
+.kkk-episode-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--kkk-space-6);
+}
+
+@media (max-width: 1023px) {
+  .kkk-episode-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 599px) {
+  .kkk-episode-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* =================================================================
+   Single Episode
+================================================================= */
+.kkk-single {
+  padding-block: var(--kkk-space-7) var(--kkk-space-9);
+}
+
+.kkk-single__header {
+  max-width: 720px;
+  margin-bottom: var(--kkk-space-7);
+}
+
+.kkk-single__eyebrow {
+  display: flex;
+  align-items: center;
+  gap: var(--kkk-space-4);
+  margin-bottom: var(--kkk-space-4);
+  font-size: 13px;
+  color: var(--kkk-color-muted);
+}
+
+.kkk-single__title {
+  font-size: clamp(22px, 3vw, 36px);
+  color: var(--kkk-color-navy-900);
+  line-height: 1.4;
+  margin-bottom: var(--kkk-space-4);
+}
+
+.kkk-single__player {
+  margin-bottom: var(--kkk-space-7);
+}
+
+.kkk-single__content {
+  max-width: 720px;
+  margin-bottom: var(--kkk-space-8);
+}
+
+.kkk-single__nav {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--kkk-space-5);
+  margin-top: var(--kkk-space-8);
+  padding-top: var(--kkk-space-7);
+  border-top: 1px solid var(--kkk-color-border);
+}
+
+.kkk-single__nav-item {
+  display: flex;
+  flex-direction: column;
+  gap: var(--kkk-space-2);
+}
+
+.kkk-single__nav-item--next {
+  text-align: right;
+}
+
+.kkk-single__nav-label {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--kkk-color-muted);
+}
+
+.kkk-single__nav-title {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--kkk-color-text);
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.kkk-single__nav-item a:hover .kkk-single__nav-title {
+  color: var(--kkk-color-blue-500);
+}
+
+.kkk-single__nav-item a {
+  text-decoration: none;
+}
+
+@media (max-width: 599px) {
+  .kkk-single__nav {
+    grid-template-columns: 1fr;
+  }
+
+  .kkk-single__nav-item--next {
+    text-align: left;
+  }
+}
+
+/* =================================================================
+   Page Template
+================================================================= */
+.kkk-page {
+  padding-block: var(--kkk-space-7) var(--kkk-space-9);
+}
+
+.kkk-page__header {
+  max-width: 720px;
+  margin-bottom: var(--kkk-space-7);
+}
+
+.kkk-page__title {
+  font-size: clamp(24px, 3vw, 40px);
+  color: var(--kkk-color-navy-900);
+}
+
+.kkk-page__content {
+  max-width: 720px;
+}
+
+/* =================================================================
+   No Posts
+================================================================= */
+.kkk-no-posts {
+  padding: var(--kkk-space-9);
+  text-align: center;
+  color: var(--kkk-color-muted);
+}
+
+.kkk-no-posts__title {
+  font-size: 20px;
+  margin-bottom: var(--kkk-space-4);
+  color: var(--kkk-color-navy-900);
+}

@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 160" width="200" height="160">
+  <rect width="200" height="160" rx="10" fill="#e0f2fe"></rect>
+  
+  <rect x="22" y="38" width="56" height="56" rx="10" fill="#1f2937"></rect>
+  <text x="50" y="76" text-anchor="middle" font-size="22" fill="#bef264" font-family="Helvetica, Arial, sans-serif" font-weight="800">AI</text>
+  
+  <path d="M120 50 Q 110 40, 124 36 Q 130 28, 144 32 Q 160 30, 162 46 Q 172 50, 168 64 Q 174 76, 162 84 L 162 110 L 110 110 L 110 96 Q 100 90, 108 78 Q 100 70, 110 60 Q 110 52, 120 50 Z" fill="none" stroke="#1f2937" stroke-width="3" stroke-linejoin="round"></path>
+  
+  <path d="M124 60 Q 132 56, 138 64 M 140 70 Q 148 66, 154 74 M 124 80 Q 134 78, 142 86" stroke="#7dd3c0" stroke-width="2.5" fill="none" stroke-linecap="round"></path>
+  <circle cx="158" cy="58" r="3" fill="#bef264"></circle>
+</svg>

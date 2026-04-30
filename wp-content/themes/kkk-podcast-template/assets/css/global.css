@@ -1,0 +1,177 @@
+/* =================================================================
+   Design Tokens
+================================================================= */
+:root {
+  /* Color */
+  --kkk-color-navy-900: #061747;
+  --kkk-color-navy-800: #0a225f;
+  --kkk-color-blue-500: #00a7e8;
+  --kkk-color-cyan-400: #19d5e8;
+  --kkk-color-lime-400: #c8ff2e;
+  --kkk-color-white: #ffffff;
+  --kkk-color-surface: #f7fbff;
+  --kkk-color-border: #d8e4f2;
+  --kkk-color-text: #071746;
+  --kkk-color-muted: #61708f;
+  --kkk-color-danger: #d92d20;
+
+  /* Typography */
+  --kkk-font-sans: "Noto Sans JP", "Hiragino Kaku Gothic ProN", "Yu Gothic", system-ui, sans-serif;
+
+  /* Layout */
+  --kkk-layout-max: 1180px;
+  --kkk-layout-gutter: clamp(20px, 4vw, 48px);
+
+  /* Breakpoints (reference only — use media queries) */
+  --kkk-bp-sm: 480px;
+  --kkk-bp-md: 768px;
+  --kkk-bp-lg: 1024px;
+  --kkk-bp-xl: 1280px;
+
+  /* Spacing */
+  --kkk-space-1: 4px;
+  --kkk-space-2: 8px;
+  --kkk-space-3: 12px;
+  --kkk-space-4: 16px;
+  --kkk-space-5: 24px;
+  --kkk-space-6: 32px;
+  --kkk-space-7: 48px;
+  --kkk-space-8: 64px;
+  --kkk-space-9: 96px;
+
+  /* Radius */
+  --kkk-radius-sm: 6px;
+  --kkk-radius-md: 8px;
+  --kkk-radius-lg: 16px;
+  --kkk-radius-full: 9999px;
+
+  /* Shadow */
+  --kkk-shadow-card: 0 14px 40px rgba(6, 23, 71, 0.10);
+  --kkk-shadow-button: 0 12px 24px rgba(6, 23, 71, 0.18);
+}
+
+/* =================================================================
+   Reset / Base
+================================================================= */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: var(--kkk-font-sans);
+  color: var(--kkk-color-text);
+  background-color: var(--kkk-color-white);
+  -webkit-font-smoothing: antialiased;
+  line-height: 1.7;
+}
+
+img, svg {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+a {
+  color: var(--kkk-color-navy-800);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+ul, ol {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 0;
+  font-weight: 800;
+  line-height: 1.3;
+  letter-spacing: 0;
+}
+
+p {
+  margin: 0;
+}
+
+/* =================================================================
+   Accessibility
+================================================================= */
+.kkk-skip-link {
+  position: absolute;
+  left: -9999px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+.kkk-skip-link:focus {
+  position: fixed;
+  left: var(--kkk-space-4);
+  top: var(--kkk-space-4);
+  width: auto;
+  height: auto;
+  overflow: visible;
+  background: var(--kkk-color-navy-900);
+  color: var(--kkk-color-white);
+  padding: var(--kkk-space-3) var(--kkk-space-5);
+  border-radius: var(--kkk-radius-sm);
+  font-weight: 700;
+  z-index: 9999;
+}
+
+:focus-visible {
+  outline: 3px solid var(--kkk-color-cyan-400);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* =================================================================
+   Layout Utility
+================================================================= */
+.kkk-container {
+  max-width: var(--kkk-layout-max);
+  margin-inline: auto;
+  padding-inline: var(--kkk-layout-gutter);
+}
+
+.kkk-section {
+  padding-block: var(--kkk-space-9);
+}
+
+.kkk-section--alt {
+  background-color: var(--kkk-color-surface);
+}
+
+.kkk-section__heading {
+  font-size: clamp(24px, 2.5vw, 28px);
+  color: var(--kkk-color-navy-900);
+  margin-bottom: var(--kkk-space-6);
+}
+
+.kkk-visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
