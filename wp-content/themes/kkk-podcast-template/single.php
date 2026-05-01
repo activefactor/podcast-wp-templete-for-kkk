@@ -2,10 +2,10 @@
 defined( 'ABSPATH' ) || exit;
 get_header();
 
-$categories  = get_the_category();
-$date        = get_the_date( 'Y年n月j日' );
-$prev_post   = get_previous_post();
-$next_post   = get_next_post();
+$categories = get_the_category();
+$date       = get_the_date( 'Y年n月j日' );
+$prev_post  = get_previous_post();
+$next_post  = get_next_post();
 ?>
 
 <main id="main" role="main">
@@ -30,12 +30,6 @@ $next_post   = get_next_post();
 					<?php echo esc_html( get_the_title() ); ?>
 				</h1>
 			</header>
-
-			<?php if ( ! has_shortcode( get_the_content(), 'powerpress' ) ) : ?>
-			<div class="kkk-single__player">
-				<?php get_template_part( 'template-parts/powerpress-player' ); ?>
-			</div>
-			<?php endif; ?>
 
 			<div class="kkk-single__content kkk-post-content">
 				<?php the_content(); ?>
@@ -70,6 +64,12 @@ $next_post   = get_next_post();
 					<?php endif; ?>
 				</div>
 			</nav>
+			<?php endif; ?>
+
+			<?php if ( comments_open() || get_comments_number() ) : ?>
+			<div class="kkk-single__comments">
+				<?php comments_template(); ?>
+			</div>
 			<?php endif; ?>
 
 		</div>

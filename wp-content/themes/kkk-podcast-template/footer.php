@@ -5,7 +5,7 @@ $apple_url   = get_theme_mod( 'kkk_podcast_apple_podcasts_url', '' );
 $spotify_url = get_theme_mod( 'kkk_podcast_spotify_url', '' );
 $youtube_url = get_theme_mod( 'kkk_podcast_youtube_url', '' );
 $amazon_url  = get_theme_mod( 'kkk_podcast_amazon_music_url', '' );
-$rss_url     = get_theme_mod( 'kkk_podcast_rss_url', '' );
+$rss_url     = get_theme_mod( 'kkk_podcast_rss_url', 'https://podcast.kk-k.net/feed/' );
 $contact_url = get_theme_mod( 'kkk_podcast_contact_url', '' );
 
 $platforms = array(
@@ -67,17 +67,36 @@ $platforms = array(
 
 		<div class="kkk-site-footer__bottom">
 			<small class="kkk-site-footer__copy">
-				&copy; <?php echo esc_html( gmdate( 'Y' ) ); ?>
+				&copy; 2015&ndash;<?php echo esc_html( gmdate( 'Y' ) ); ?>
 				<a href="<?php echo esc_url( home_url( '/' ) ); ?>">
 					<?php echo esc_html( get_bloginfo( 'name' ) ); ?>
 				</a>
 			</small>
-			<?php if ( $contact_url ) : ?>
-			<a class="kkk-site-footer__contact"
-				href="<?php echo esc_url( $contact_url ); ?>">
-				<?php esc_html_e( 'お問い合わせ', 'kkk-podcast-template' ); ?>
-			</a>
-			<?php endif; ?>
+
+			<div class="kkk-site-footer__sub-links">
+				<?php if ( $contact_url ) : ?>
+				<a class="kkk-site-footer__contact"
+					href="<?php echo esc_url( $contact_url ); ?>">
+					<?php esc_html_e( 'お問い合わせ', 'kkk-podcast-template' ); ?>
+				</a>
+				<?php endif; ?>
+
+				<?php if ( is_user_logged_in() ) : ?>
+				<a class="kkk-site-footer__admin-link"
+					href="<?php echo esc_url( admin_url() ); ?>">
+					<?php esc_html_e( '管理画面', 'kkk-podcast-template' ); ?>
+				</a>
+				<a class="kkk-site-footer__admin-link"
+					href="<?php echo esc_url( wp_logout_url( get_permalink() ?: home_url( '/' ) ) ); ?>">
+					<?php esc_html_e( 'ログアウト', 'kkk-podcast-template' ); ?>
+				</a>
+				<?php else : ?>
+				<a class="kkk-site-footer__admin-link"
+					href="<?php echo esc_url( wp_login_url( get_permalink() ?: home_url( '/' ) ) ); ?>">
+					<?php esc_html_e( 'ログイン', 'kkk-podcast-template' ); ?>
+				</a>
+				<?php endif; ?>
+			</div>
 		</div>
 
 	</div>

@@ -79,6 +79,11 @@
   filter: drop-shadow(0 24px 48px rgba(0, 167, 232, 0.25));
 }
 
+/* ヒーロー内のリンク・テキストは白を継承 */
+.kkk-hero a:not(.kkk-btn) {
+  color: var(--kkk-color-white);
+}
+
 /* Hero bg decoration */
 .kkk-hero::before {
   content: '';
@@ -387,6 +392,87 @@
 
 .kkk-page__content {
   max-width: 720px;
+}
+
+/* =================================================================
+   About CTA Section (front page)
+================================================================= */
+.kkk-about-cta {
+  background: var(--kkk-color-surface);
+}
+
+.kkk-about-cta__inner {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: var(--kkk-space-8);
+  align-items: center;
+}
+
+.kkk-about-cta__content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--kkk-space-4);
+}
+
+.kkk-about-cta__eyebrow {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--kkk-color-blue-500);
+}
+
+.kkk-about-cta__title {
+  font-size: clamp(22px, 2.5vw, 28px);
+  color: var(--kkk-color-navy-900);
+}
+
+.kkk-about-cta__text {
+  font-size: 15px;
+  color: var(--kkk-color-muted);
+  line-height: 1.7;
+  max-width: 36em;
+}
+
+.kkk-about-cta__visual img {
+  opacity: 0.7;
+}
+
+@media (max-width: 599px) {
+  .kkk-about-cta__inner {
+    grid-template-columns: 1fr;
+  }
+
+  .kkk-about-cta__visual {
+    display: none;
+  }
+}
+
+/* =================================================================
+   About Page Template
+================================================================= */
+.kkk-about-page__header {
+  background: var(--kkk-color-navy-900);
+  color: var(--kkk-color-white);
+  padding-block: var(--kkk-space-8);
+}
+
+.kkk-about-page__title {
+  font-size: clamp(28px, 4vw, 48px);
+  color: var(--kkk-color-white);
+}
+
+.kkk-about-page__content-wrap {
+  padding-block: var(--kkk-space-8);
+}
+
+.kkk-about-page__content {
+  max-width: 720px;
+}
+
+/* Listen セクション内リンク色 */
+.kkk-listen a:not(.kkk-listen-link):not(.kkk-btn) {
+  color: var(--kkk-color-white);
 }
 
 /* =================================================================

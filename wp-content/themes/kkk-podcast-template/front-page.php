@@ -1,6 +1,8 @@
 <?php
 defined( 'ABSPATH' ) || exit;
 get_header();
+
+$episodes_url = kkk_podcast_get_episodes_url();
 ?>
 
 <main id="main" role="main">
@@ -36,9 +38,9 @@ get_header();
 						<?php echo esc_html( wp_strip_all_tags( $excerpt ) ); ?>
 					</p>
 					<?php endif; ?>
-					<a class="kkk-btn kkk-btn--secondary kkk-latest-episode__link"
+					<a class="kkk-btn kkk-btn--primary kkk-latest-episode__link"
 						href="<?php echo esc_url( get_permalink() ); ?>">
-						<?php esc_html_e( '詳細・Show Notes', 'kkk-podcast-template' ); ?>
+						<?php esc_html_e( '詳細・Show Notes を見る', 'kkk-podcast-template' ); ?>
 					</a>
 				</div>
 
@@ -54,7 +56,6 @@ get_header();
 	?>
 
 	<?php
-	/* 最新エピソード グリッド（最新回を除く最大6件） */
 	$recent_args = array(
 		'post_type'      => 'post',
 		'posts_per_page' => 7,
@@ -74,14 +75,14 @@ get_header();
 				<?php while ( $recent_query->have_posts() ) :
 					$recent_query->the_post();
 					$count++;
-					if ( $count === 1 ) continue; // 最新回はすでに上で表示
+					if ( $count === 1 ) continue;
 					if ( $count > 7 ) break;
 					get_template_part( 'template-parts/episode-card' );
 				endwhile; ?>
 			</div>
 			<div style="text-align:center; margin-top:var(--kkk-space-8);">
 				<a class="kkk-btn kkk-btn--outline"
-					href="<?php echo esc_url( get_post_type_archive_link( 'post' ) ? get_post_type_archive_link( 'post' ) : home_url( '/' ) ); ?>">
+					href="<?php echo esc_url( $episodes_url ); ?>">
 					<?php esc_html_e( 'すべてのエピソードを見る', 'kkk-podcast-template' ); ?>
 				</a>
 			</div>
@@ -95,6 +96,8 @@ get_header();
 	<?php get_template_part( 'template-parts/topic-list' ); ?>
 
 	<?php get_template_part( 'template-parts/host-list' ); ?>
+
+	<?php get_template_part( 'template-parts/about-cta' ); ?>
 
 	<?php get_template_part( 'template-parts/listen-links' ); ?>
 

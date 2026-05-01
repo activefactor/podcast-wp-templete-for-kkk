@@ -47,6 +47,10 @@ function kkk_podcast_enqueue() {
 	wp_enqueue_style( 'kkk-templates', $uri . '/assets/css/templates.css', array( 'kkk-components' ), $ver );
 
 	wp_enqueue_script( 'kkk-navigation', $uri . '/assets/js/navigation.js', array(), $ver, true );
+
+	if ( is_home() || is_archive() || is_category() ) {
+		wp_enqueue_script( 'kkk-filter', $uri . '/assets/js/filter.js', array(), $ver, true );
+	}
 }
 add_action( 'wp_enqueue_scripts', 'kkk_podcast_enqueue' );
 
@@ -78,13 +82,19 @@ function kkk_podcast_customize_register( WP_Customize_Manager $wp_customize ) {
 		'amazon_music_url'    => 'Amazon Music URL',
 		'rss_url'             => 'RSS フィード URL',
 		'contact_url'         => 'お問い合わせ URL',
+		'about_url'           => 'About ページ URL',
+	);
+
+	$defaults = array(
+		'rss_url'   => 'https://podcast.kk-k.net/feed/',
+		'about_url' => '',
 	);
 
 	foreach ( $fields as $id => $label ) {
 		$wp_customize->add_setting(
 			'kkk_podcast_' . $id,
 			array(
-				'default'           => '',
+				'default'           => $defaults[ $id ] ?? '',
 				'sanitize_callback' => 'esc_url_raw',
 				'transport'         => 'refresh',
 			)
@@ -127,6 +137,35 @@ function kkk_podcast_customize_register( WP_Customize_Manager $wp_customize ) {
 add_action( 'customize_register', 'kkk_podcast_customize_register' );
 
 /* -------------------------------------------------------
+   Episodes Index URL ヘルパー
+------------------------------------------------------- */
+
+function kkk_podcast_get_episodes_url(): string {
+	$page_id = (int) get_option( 'page_for_posts' );
+	if ( $page_id ) {
+		$url = get_permalink( $page_id );
+		return $url ? $url : home_url( '/' );
+	}
+	return home_url( '/' );
+}
+
+/* -------------------------------------------------------
+   About ページ URL ヘルパー
+------------------------------------------------------- */
+
+function kkk_podcast_get_about_url(): string {
+	$url = get_theme_mod( 'kkk_podcast_about_url', '' );
+	if ( $url ) {
+		return $url;
+	}
+	$page = get_page_by_path( 'sample-page' );
+	if ( $page ) {
+		return get_permalink( $page ) ?: '';
+	}
+	return '';
+}
+
+/* -------------------------------------------------------
    PowerPress ヘルパー
 ------------------------------------------------------- */
 
@@ -153,6 +192,24 @@ function kkk_podcast_get_latest_post(): ?WP_Post {
 		)
 	);
 	return ! empty( $posts ) ? $posts[0] : null;
+}
+
+/* -------------------------------------------------------
+   エピソード再生時間取得ヘルパー
+------------------------------------------------------- */
+
+function kkk_podcast_get_duration( int $post_id ): string {
+	$keys = array(
+		'_blubrry_powerpress_blubrry_duration',
+		'duration',
+	);
+	foreach ( $keys as $key ) {
+		$val = get_post_meta( $post_id, $key, true );
+		if ( $val ) {
+			return sanitize_text_field( $val );
+		}
+	}
+	return '';
 }
 
 /* -------------------------------------------------------

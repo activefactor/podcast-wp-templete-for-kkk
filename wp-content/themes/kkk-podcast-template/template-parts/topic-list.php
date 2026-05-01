@@ -1,33 +1,33 @@
 <?php
 defined( 'ABSPATH' ) || exit;
 
-$img_uri = get_template_directory_uri() . '/assets/img/';
+$img_uri      = get_template_directory_uri() . '/assets/img/';
+$episodes_url = kkk_podcast_get_episodes_url();
 
 $topics = array(
 	array(
-		'icon'  => 'topic-webdesign.svg',
-		'label' => 'Webデザイン',
-		'alt'   => 'Webデザインアイコン',
+		'icon'     => 'topic-webdesign.svg',
+		'label'    => 'Web',
+		'alt'      => 'Webアイコン',
+		'cat_slug' => 'web',
 	),
 	array(
-		'icon'  => 'topic-gadget.svg',
-		'label' => 'ガジェット',
-		'alt'   => 'ガジェットアイコン',
+		'icon'     => 'topic-edtech.svg',
+		'label'    => '教育',
+		'alt'      => '教育アイコン',
+		'cat_slug' => 'education',
 	),
 	array(
-		'icon'  => 'topic-edtech.svg',
-		'label' => '教育テクノロジー',
-		'alt'   => '教育テクノロジーアイコン',
+		'icon'     => 'topic-gadget.svg',
+		'label'    => 'ハード/ガジェット',
+		'alt'      => 'ガジェットアイコン',
+		'cat_slug' => 'gadget',
 	),
 	array(
-		'icon'  => 'topic-ai.svg',
-		'label' => 'AI',
-		'alt'   => 'AIアイコン',
-	),
-	array(
-		'icon'  => 'topic-chat.svg',
-		'label' => 'ゆるい雑談',
-		'alt'   => 'ゆるい雑談アイコン',
+		'icon'     => 'topic-chat.svg',
+		'label'    => 'フリートーク',
+		'alt'      => 'フリートークアイコン',
+		'cat_slug' => 'freetalk',
 	),
 );
 ?>
@@ -38,15 +38,19 @@ $topics = array(
 			<?php esc_html_e( '取り上げるトピック', 'kkk-podcast-template' ); ?>
 		</h2>
 		<div class="kkk-topics__grid">
-			<?php foreach ( $topics as $topic ) : ?>
-			<div class="kkk-topic-chip">
+			<?php foreach ( $topics as $topic ) :
+				$filter_url = add_query_arg( 'cat_filter', $topic['cat_slug'], $episodes_url );
+			?>
+			<a class="kkk-topic-chip"
+				href="<?php echo esc_url( $filter_url ); ?>"
+				aria-label="<?php printf( esc_attr__( '%s のエピソード一覧', 'kkk-podcast-template' ), $topic['label'] ); ?>">
 				<img class="kkk-topic-chip__icon"
 					src="<?php echo esc_url( $img_uri . $topic['icon'] ); ?>"
 					alt="<?php echo esc_attr( $topic['alt'] ); ?>"
 					width="56" height="56"
 					loading="lazy">
 				<span class="kkk-topic-chip__label"><?php echo esc_html( $topic['label'] ); ?></span>
-			</div>
+			</a>
 			<?php endforeach; ?>
 		</div>
 	</div>
