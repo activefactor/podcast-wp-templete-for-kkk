@@ -95,8 +95,6 @@ $episodes_url = kkk_podcast_get_episodes_url();
 
 	<?php get_template_part( 'template-parts/topic-list' ); ?>
 
-	<?php get_template_part( 'template-parts/host-list' ); ?>
-
 	<?php get_template_part( 'template-parts/about-cta' ); ?>
 
 	<?php get_template_part( 'template-parts/listen-links' ); ?>

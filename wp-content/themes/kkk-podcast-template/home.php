@@ -3,13 +3,13 @@ defined( 'ABSPATH' ) || exit;
 get_header();
 
 $all_cats       = get_categories( array( 'hide_empty' => true ) );
-$initial_cat    = isset( $_GET['cat_filter'] ) ? sanitize_key( $_GET['cat_filter'] ) : '';
-$search_query   = isset( $_GET['episode_search'] ) ? sanitize_text_field( $_GET['episode_search'] ) : '';
+$initial_cat    = isset( $_GET['cat_filter'] ) ? sanitize_key( wp_unslash( $_GET['cat_filter'] ) ) : '';
+$search_query   = isset( $_GET['episode_search'] ) ? sanitize_text_field( wp_unslash( $_GET['episode_search'] ) ) : '';
 
 /* 全エピソード取得（クライアントサイドフィルター用） */
 $all_args = array(
 	'post_type'      => 'post',
-	'posts_per_page' => -1,
+	'posts_per_page' => 200,
 	'post_status'    => 'publish',
 	'orderby'        => 'date',
 	'order'          => 'DESC',

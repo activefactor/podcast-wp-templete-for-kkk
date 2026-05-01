@@ -8,7 +8,7 @@ $initial_cat = $current_cat ? $current_cat->slug : '';
 
 $all_args = array(
 	'post_type'      => 'post',
-	'posts_per_page' => -1,
+	'posts_per_page' => 200,
 	'post_status'    => 'publish',
 	'orderby'        => 'date',
 	'order'          => 'DESC',

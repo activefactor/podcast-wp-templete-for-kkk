@@ -33,7 +33,7 @@ $platforms = array(
 
 $has_any = false;
 foreach ( $platforms as $p ) {
-	if ( get_theme_mod( 'kkk_podcast_' . $p['key'], '' ) ) {
+	if ( get_theme_mod( 'kkk_podcast_' . $p['key'], 'rss_url' === $p['key'] ? 'https://podcast.kk-k.net/feed/' : '' ) ) {
 		$has_any = true;
 		break;
 	}
@@ -54,7 +54,7 @@ if ( ! $has_any ) {
 		</p>
 		<div class="kkk-listen__grid">
 			<?php foreach ( $platforms as $p ) :
-				$url = get_theme_mod( 'kkk_podcast_' . $p['key'], '' );
+				$url = get_theme_mod( 'kkk_podcast_' . $p['key'], 'rss_url' === $p['key'] ? 'https://podcast.kk-k.net/feed/' : '' );
 				if ( ! $url ) continue;
 			?>
 			<a class="kkk-listen-link"

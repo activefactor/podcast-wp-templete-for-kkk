@@ -400,6 +400,9 @@
   border-radius: var(--kkk-radius-lg);
   padding: var(--kkk-space-6);
   color: var(--kkk-color-text);
+  overflow: hidden;
+  max-width: 100%;
+  box-sizing: border-box;
 }
 
 .kkk-player-wrapper__label {

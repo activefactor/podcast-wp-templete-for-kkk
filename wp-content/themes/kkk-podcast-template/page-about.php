@@ -33,8 +33,6 @@ get_header();
 
 	<?php endwhile; endif; ?>
 
-	<?php get_template_part( 'template-parts/host-list' ); ?>
-
 	<?php get_template_part( 'template-parts/topic-list' ); ?>
 
 	<?php get_template_part( 'template-parts/listen-links' ); ?>
